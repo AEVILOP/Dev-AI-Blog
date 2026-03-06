@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div className="w-full bg-black">
             {/* Search Bar */}
-            <div className="sticky top-0 z-50 bg-black text-white py-4 px-8">
+            {/* <div className="sticky top-0 z-50 bg-black text-white py-4 px-8">
                 <div className="flex justify-center">
                     <div className="w-full max-w-2xl relative group">
                         <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-lg blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
@@ -19,7 +19,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Main Hero Section */}
             <div className='relative h-screen bg-black text-white flex items-start justify-start overflow-hidden pt-10 lg:pt-16'>
