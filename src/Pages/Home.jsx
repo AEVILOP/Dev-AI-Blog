@@ -7,7 +7,7 @@ const Home = () => {
             <div className="sticky top-0 z-50 bg-black text-white py-4 px-8">
                 <div className="flex justify-center">
                     <div className="w-full max-w-2xl relative group">
-                        <div className="absolute inset-0 bg-linear-to-r from-orange-500 to-orange-400 rounded-lg blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-lg blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
                         <div className="relative flex items-center">
                             <span className="absolute left-4 text-orange-400 text-lg">🔍</span>
                             <input
@@ -56,7 +56,7 @@ const Home = () => {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                        <button className="text-black bg-linear-to-br from-orange-500 to-orange-900 rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-white w-full sm:w-auto">
+                        <button className="text-black bg-linear-to-br from-orange-400 to-orange-500 rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-white w-full sm:w-auto">
                             GENERATE BLOG →
                         </button>
                         <button className="text-orange-400 bg-linear-to-br from-gray-800 to-black rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-orange-300 w-full sm:w-auto border-2 border-orange-500">

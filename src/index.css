@@ -53,3 +53,31 @@ html {
 html::-webkit-scrollbar {
   display: none;
 }
+
+/* Login page animations */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-scroll {
+  animation: ticker 22s linear infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.login-spin {
+  animation: spin 0.8s linear infinite;
+}
