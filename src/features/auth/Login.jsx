@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import InfiniteScroll from '../Components/InfiniteScroll'
+import InfiniteScroll from '../blog/components/Pagination'
 
 const ORANGE = '#f97316'
 const DIM = '#1a1a1a'

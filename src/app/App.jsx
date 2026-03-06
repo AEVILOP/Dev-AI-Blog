@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './Components/Navbar'
-import InfiniteScroll from './Components/InfiniteScroll'
-import './index.css'
-import Home from './Pages/Home'
-import Login from './Pages/Login-page'
+import Navbar from '../shared/components/Navbar'
+import InfiniteScroll from '../features/blog/components/Pagination'
+import '../styles/index.css'
+import Home from '../features/blog/pages/Home'
+import Login from '../features/auth/Login'
 
 function App() {
 
