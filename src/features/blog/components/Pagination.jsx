@@ -1,28 +1,26 @@
-import React from 'react'
+export default function Pagination({ currentPage, totalPages, onPageChange }) {
+  if (totalPages <= 1) return null;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const base  = "font-barlow font-black text-sm tracking-[0.08em] border-2 transition-all duration-150 cursor-pointer";
 
-const InfiniteScrollBar = () => {
+  return (
+    <div className="flex items-center justify-center gap-2 mt-12">
+      <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}
+        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===1?"border-neutral-900 text-neutral-900 cursor-not-allowed":"border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
+        ← PREV
+      </button>
 
-    const technologies = ['AI', 'PRISMA', 'TYPESCRIPT', 'GO', 'RUST', 'PYTHON', 'REACT', 'NODE', 'NEXT.JS', 'SQL', 'DOCKER', 'KUBERNETES', 'AWS', 'GCP', 'AZURE', 'MONGODB', 'POSTGRESQL', 'REDIS', 'GRAPHQL', 'APOLLO', 'VUE.JS', 'ANGULAR', 'SVELTE']
-    const repeatedTechnologies = [...technologies, ...technologies, ...technologies]
+      {pages.map(p => (
+        <button key={p} onClick={() => onPageChange(p)}
+          className={`${base} w-10 h-10 ${p===currentPage?"border-orange-500 bg-orange-500 text-black":"border-neutral-900 text-neutral-600 hover:border-neutral-600 hover:text-white"}`}>
+          {p}
+        </button>
+      ))}
 
-    return (
-        <div className="w-full overflow-hidden py-2 sm:py-3 lg:py-4 bg-black border-gray-600 border-t border-b">
-
-
-            <div className="scroll-container inline-flex whitespace-nowrap gap-4 sm:gap-6 lg:gap-8">
-                {repeatedTechnologies.map((tech, index) => (
-                    <React.Fragment key={index}>
-                        <span className={`text-xs sm:text-sm lg:text-base ${index % 2 === 0 ? 'text-orange-400' : 'text-gray-600'} font-bold tracking-wider shrink-0`}>
-                            {tech}
-                        </span>
-                        {index !== repeatedTechnologies.length - 1 && (
-                            <span className='text-orange-600 opacity-80 shrink-0'>•</span>
-                        )}
-                    </React.Fragment>
-                ))}
-            </div>
-        </div>
-    )
+      <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}
+        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===totalPages?"border-neutral-900 text-neutral-900 cursor-not-allowed":"border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
+        NEXT →
+      </button>
+    </div>
+  );
 }
-
-export default InfiniteScrollBar

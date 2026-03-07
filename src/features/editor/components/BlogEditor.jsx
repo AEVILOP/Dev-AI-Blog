@@ -1,77 +1,51 @@
-export default function BlogEditor({ register }) {
-    return (
-        <div className="space-y-8">
+// BlogEditor — all editable text sections of the generated blog.
+// Receives fields + setters from CreateBlog page.
 
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Title</label>
+const SECTIONS = [
+  { key: "intro",          label: "INTRO",           rows: 4 },
+  { key: "whatItDoes",     label: "WHAT IT DOES",    rows: 5 },
+  { key: "techStack",      label: "TECH STACK",      rows: 5 },
+  { key: "challenges",     label: "CHALLENGES",      rows: 5 },
+  { key: "gettingStarted", label: "GETTING STARTED", rows: 4 },
+  { key: "conclusion",     label: "CONCLUSION",      rows: 4 },
+];
 
-                <input
-                    {...register("title")}
-                    placeholder="Blog title"
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3 text-xl"
-                />
-            </div>
+export default function BlogEditor({ title, setTitle, fields, setField }) {
+  const textareaCls =
+    "w-full bg-neutral-950 border-2 border-neutral-900 text-white px-4 py-3.5 " +
+    "text-sm leading-relaxed focus:outline-none focus:border-orange-500 " +
+    "transition-colors duration-150 resize-y font-dm";
 
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Introduction</label>
+  return (
+    <div className="flex flex-col gap-7">
+      {/* Title */}
+      <div>
+        <label className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.18em] uppercase block mb-2.5">
+          TITLE
+        </label>
+        <input
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          className="w-full bg-neutral-950 border-2 border-neutral-900 text-white px-4 py-4
+            font-barlow font-black text-xl uppercase tracking-tight
+            focus:outline-none focus:border-orange-500 transition-colors duration-150"
+        />
+      </div>
 
-                <textarea
-                    {...register("intro")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
-            <div>
-                <label className="text-xs text-orange-500 uppercase">What It Does</label>
-
-                <textarea
-                    {...register("whatItDoes")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Tech Stack</label>
-
-                <textarea
-                    {...register("techStack")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Challenges</label>
-
-                <textarea
-                    {...register("challenges")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Getting Started</label>
-
-                <textarea
-                    {...register("gettingStarted")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
-            <div>
-                <label className="text-xs text-orange-500 uppercase">Conclusion</label>
-
-                <textarea
-                    {...register("conclusion")}
-                    rows={4}
-                    className="w-full bg-neutral-950 border border-neutral-800 px-4 py-3"
-                />
-            </div>
-
+      {/* Sections */}
+      {SECTIONS.map(({ key, label, rows }) => (
+        <div key={key}>
+          <label className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.18em] uppercase block mb-2.5">
+            {label}
+          </label>
+          <textarea
+            rows={rows}
+            value={fields[key] || ""}
+            onChange={e => setField(key, e.target.value)}
+            className={textareaCls}
+          />
         </div>
-    );
+      ))}
+    </div>
+  );
 }

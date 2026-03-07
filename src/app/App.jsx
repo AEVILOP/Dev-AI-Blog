@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from '../shared/components/Navbar'
-import InfiniteScroll from '../features/blog/components/Pagination'
 import '../styles/index.css'
 import Home from '../features/blog/pages/Home'
 import Login from '../features/auth/Login'
@@ -14,11 +13,10 @@ function App() {
         {/* Login page as landing page */}
         <Route path="/" element={<Login />} />
 
-        {/* Home route with Navbar + InfiniteScroll */}
+        {/* Home route with Navbar */}
         <Route path="/home" element={
           <>
             <Navbar />
-            <InfiniteScroll />
             <Home />
           </>
         } />
