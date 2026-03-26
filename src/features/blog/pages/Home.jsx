@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+    const navigate = useNavigate()
+
     return (
-        <div className="w-full bg-black">
+        <div className="w-full bg-transparent">
             {/* Search Bar */}
             {/* <div className="sticky top-0 z-50 bg-black text-white py-4 px-8">
                 <div className="flex justify-center">
@@ -22,7 +25,7 @@ const Home = () => {
             </div> */}
 
             {/* Main Hero Section */}
-            <div className='relative h-screen bg-black text-white flex items-start justify-start overflow-hidden pt-10 lg:pt-16'>
+            <div className='relative h-screen bg-transparent text-white flex items-start justify-start overflow-hidden pt-10 lg:pt-16'>
 
                 {/* Watermark Background with Border Text */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -56,10 +59,10 @@ const Home = () => {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                        <button className="text-black bg-linear-to-br from-orange-400 to-orange-500 rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-white w-full sm:w-auto">
+                        <button onClick={() => navigate('/create')} className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none cursor-pointer focus:ring-orange-300 dark:focus:ring-black font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-white w-full sm:w-auto">
                             GENERATE BLOG →
                         </button>
-                        <button className="text-orange-400 bg-linear-to-br from-gray-800 to-black rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-orange-300 w-full sm:w-auto border-2 border-orange-500">
+                        <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="text-orange-400 bg-linear-to-br from-gray-800 to-black rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none cursor-pointer focus:ring-orange-300 dark:focus:ring-black font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-orange-300 w-full sm:w-auto border-2 border-orange-500">
                             BROWSE
                         </button>
                     </div>

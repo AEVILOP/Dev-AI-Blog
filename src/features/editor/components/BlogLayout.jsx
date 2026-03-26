@@ -1,60 +1,77 @@
-// BlogPreview — read-only rendered view of the blog before publishing.
+import BlogEditor from "./BlogEditor";
+import BlogPreview from "./BlogPreview";
 
-export default function BlogPreview({ title, fields, repoLanguage, tone }) {
-  const sections = [
-    { label: "WHAT IT DOES",    content: fields.whatItDoes,     accent: false },
-    { label: "TECH STACK",      content: fields.techStack,      accent: true  },
-    { label: "CHALLENGES",      content: fields.challenges,     accent: false },
-    { label: "GETTING STARTED", content: fields.gettingStarted, accent: false, border: true },
-    { label: "FINAL THOUGHTS",  content: fields.conclusion,     accent: false },
-  ];
-
+export default function BlogLayout({
+  title, setTitle,
+  fields, setField,
+  repoLanguage,
+  tone,
+  actions,
+  extras
+}) {
   return (
-    <div className="bg-neutral-950 border-2 border-neutral-900 p-8 flex flex-col gap-8">
-      {/* Preview badge */}
-      <div className="flex items-center gap-3">
-        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
-        <span className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.2em] uppercase">LIVE PREVIEW</span>
-      </div>
+    <div className="flex h-screen bg-black text-white">
 
-      {/* Meta */}
-      <div className="flex items-center gap-4 flex-wrap">
-        {repoLanguage && (
-          <span className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.18em] uppercase">{repoLanguage}</span>
-        )}
-        {tone && (
-          <span className="font-barlow font-bold text-[10px] text-neutral-700 tracking-[0.14em] uppercase">{tone} TONE</span>
-        )}
-      </div>
+      {/* LEFT SIDE — EDITOR & SETTINGS */}
+      <div className="w-1/2 border-r border-neutral-900 overflow-y-auto p-10 flex flex-col justify-between">
+        
+        <div className="space-y-8">
+          {extras.error && (
+            <div className="px-4 py-3 bg-red-950/30 border border-red-900">
+              <span className="font-barlow font-bold text-xs text-red-500">{extras.error}</span>
+            </div>
+          )}
+          
+          {extras.readmeNote && (
+            <div className="px-4 py-3 bg-orange-950/20 border border-orange-900/40">
+              <span className="font-barlow font-bold text-xs text-orange-400">{extras.readmeNote}</span>
+            </div>
+          )}
 
-      {/* Title */}
-      <h1 className="font-barlow font-black text-white uppercase leading-[0.93] tracking-tight"
-        style={{ fontSize: "clamp(24px,3vw,40px)" }}>
-        {title || "YOUR BLOG TITLE"}
-      </h1>
+          <BlogEditor 
+            title={title} 
+            setTitle={setTitle} 
+            fields={fields} 
+            setField={setField} 
+          />
+        </div>
 
-      {/* Intro */}
-      {fields.intro && (
-        <p className="text-neutral-500 text-sm leading-relaxed italic border-l-2 border-neutral-800 pl-4">
-          {fields.intro}
-        </p>
-      )}
-
-      <div className="w-full h-px bg-gradient-to-r from-orange-500 to-transparent" />
-
-      {/* Content sections */}
-      {sections.map(({ label, content, accent, border }) => {
-        if (!content) return null;
-        return (
-          <div key={label} className={border ? "border-l-4 border-orange-500 pl-5" : ""}>
-            <h2 className={`font-barlow font-black text-lg uppercase tracking-tight mb-3
-              ${accent ? "text-orange-500" : "text-white"}`}>
-              {label}
-            </h2>
-            <p className="text-neutral-600 text-sm leading-relaxed">{content}</p>
+        {/* Action Panel */}
+        <div className="mt-12 pt-8 border-t border-neutral-900">
+          <div className="flex items-center justify-between">
+            {extras.regenProps}
+            
+            <div className="flex gap-4">
+              <button
+                onClick={actions.onSaveDraft}
+                disabled={actions.saving}
+                className="font-barlow font-black text-xs tracking-widest uppercase border border-neutral-800 text-neutral-400 px-6 py-3 hover:text-white hover:border-neutral-600 transition-colors"
+              >
+                SAVE DRAFT
+              </button>
+              
+              <button
+                onClick={actions.onPublish}
+                disabled={actions.saving}
+                className="font-barlow font-black text-xs tracking-widest uppercase bg-orange-500 text-black px-6 py-3 hover:bg-black hover:text-orange-500 border border-orange-500 transition-colors"
+              >
+                PUBLISH
+              </button>
+            </div>
           </div>
-        );
-      })}
+        </div>
+      </div>
+
+      {/* RIGHT SIDE — PREVIEW RE-RENDER */}
+      <div className="w-1/2 overflow-y-auto bg-neutral-950 p-10">
+        <BlogPreview 
+          title={title}
+          fields={fields}
+          repoLanguage={repoLanguage}
+          tone={tone}
+        />
+      </div>
+
     </div>
   );
 }

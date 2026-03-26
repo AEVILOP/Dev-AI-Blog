@@ -6,7 +6,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
     <div className="flex items-center justify-center gap-2 mt-12">
       <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}
-        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===1?"border-neutral-900 text-neutral-900 cursor-not-allowed":"border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
+        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===1?"border-neutral-900 text-neutral-900 cursor-not-allowed":" rounded-2xl border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
         ← PREV
       </button>
 
@@ -18,7 +18,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       ))}
 
       <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}
-        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===totalPages?"border-neutral-900 text-neutral-900 cursor-not-allowed":"border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
+        className={`${base} px-4 py-2.5 uppercase text-[11px] tracking-[0.12em] ${currentPage===totalPages?" rounded-2xl border-neutral-900 text-neutral-900 cursor-not-allowed":"border-neutral-800 text-neutral-600 hover:border-white hover:text-white"}`}>
         NEXT →
       </button>
     </div>
