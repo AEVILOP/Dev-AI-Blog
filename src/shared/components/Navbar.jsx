@@ -12,14 +12,13 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="flex items-center space-x-2">
                     <Link to="/" className="text-2xl font-black no-underline text-white">
-                        DEV<span className="text-orange-400">BLOG</span>
-                        .AI
+                        DEV<span className="text-orange-400">BLOG.AI</span>
                     </Link>
                 </div>
 
                 {/* Center Navigation */}
                 <div className="flex items-center space-x-8">
-                    <Link to="/home" className="text-gray-700 hover:text-white transition-colors uppercase text-xs font-semibold tracking-wider no-underline">EXPLORE</Link>
+                    <Link to="/explore" className="text-gray-700 hover:text-white transition-colors uppercase text-xs font-semibold tracking-wider no-underline">EXPLORE</Link>
                     <a href="#" className="text-gray-700 hover:text-white transition-colors uppercase text-xs font-semibold tracking-wider">TAGS</a>
                 </div>
 

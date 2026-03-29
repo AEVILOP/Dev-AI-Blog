@@ -47,7 +47,7 @@ export default function BlogDetail() {
           ← BACK
         </button>
         <a href="/" className="font-barlow font-black text-lg text-white uppercase no-underline">
-          DEV<span className="text-orange-500">BLOG</span>.
+          DEV<span className="text-orange-500">BLOG.AI</span>
         </a>
         <button onClick={share}
           className="font-barlow font-black text-[11px] tracking-[0.14em] uppercase border-2 border-neutral-900 text-neutral-700 px-3.5 py-2 cursor-pointer transition-all duration-150 hover:border-white hover:text-white">

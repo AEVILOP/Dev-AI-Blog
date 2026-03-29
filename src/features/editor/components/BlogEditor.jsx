@@ -2,12 +2,12 @@
 // Receives fields + setters from CreateBlog page.
 
 const SECTIONS = [
-  { key: "intro",          label: "INTRO",           rows: 4 },
-  { key: "whatItDoes",     label: "WHAT IT DOES",    rows: 5 },
-  { key: "techStack",      label: "TECH STACK",      rows: 5 },
-  { key: "challenges",     label: "CHALLENGES",      rows: 5 },
-  { key: "gettingStarted", label: "GETTING STARTED", rows: 4 },
-  { key: "conclusion",     label: "CONCLUSION",      rows: 4 },
+  { key: "intro",          label: "INTRO",           rows: 6 },
+  { key: "whatItDoes",     label: "WHAT IT DOES",    rows: 8 },
+  { key: "techStack",      label: "TECH STACK",      rows: 8 },
+  { key: "challenges",     label: "CHALLENGES",      rows: 8 },
+  { key: "gettingStarted", label: "GETTING STARTED", rows: 6 },
+  { key: "conclusion",     label: "CONCLUSION",      rows: 6 },
 ];
 
 export default function BlogEditor({ title, setTitle, fields, setField }) {

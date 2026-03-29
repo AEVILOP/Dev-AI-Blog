@@ -7,6 +7,7 @@ import Navbar from '../shared/components/Navbar';
 // Features / Pages
 import Login from '../features/auth/Login';
 import Home from '../features/blog/pages/Home';
+import Explore from '../features/blog/pages/Explore';
 import BlogDetail from '../features/blog/pages/BlogDetail';
 import CreateBlog from '../features/editor/pages/CreateBlog';
 import AccountSettings from '../features/account/AccountSettings';
@@ -22,6 +23,13 @@ export default function AppRoutes() {
         <>
           <Navbar />
           <Home />
+        </>
+      } />
+
+      <Route path="/explore" element={
+        <>
+          <Navbar />
+          <Explore />
         </>
       } />
       

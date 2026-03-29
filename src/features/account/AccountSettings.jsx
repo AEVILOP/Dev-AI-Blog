@@ -43,7 +43,7 @@ export default function AccountSettings() {
       {/* Nav */}
       <nav className="sticky top-0 z-10 bg-black/60 backdrop-blur-md border-b-2 border-neutral-900 px-10 py-4 flex items-center justify-between">
         <a href="/" className="font-barlow font-black text-lg text-white uppercase no-underline">
-          DEV<span className="text-orange-500">BLOG</span>.
+          DEV<span className="text-orange-500">BLOG.AI</span>
         </a>
         <span className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.2em] uppercase">ACCOUNT</span>
         <button

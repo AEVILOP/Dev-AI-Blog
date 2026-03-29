@@ -17,8 +17,8 @@ const blogService = {
 
   getMyBlogs: async () => {
     const { data } = await apiClient.get("/api/blogs/user/me");
-    // API returns { blogs, ... } – return only the blogs array for easier consumption.
-    return data?.blogs || [];
+    // Backend returns a flat array of blogs directly
+    return Array.isArray(data) ? data : [];
   },
 
   create: async (blogData) => {

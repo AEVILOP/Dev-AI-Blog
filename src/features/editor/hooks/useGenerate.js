@@ -33,10 +33,10 @@ export function useGenerate() {
       const data = await aiService.generate(payload);
       if (data.readmeNote) setReadmeNote(data.readmeNote);
       if (payload.isRegeneration) setRegenerateCount(prev => prev + 1);
-      return data.blog;
+      return data;
     } catch (err) {
-      const msg = err.response?.data?.message || "Generation failed";
-      setError(msg);
+      const errData = err.response?.data || { message: "Generation failed" };
+      setError(errData);
       return null;
     } finally { setLoading(false); }
   };

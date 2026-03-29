@@ -16,7 +16,7 @@ export default function CreateBlog() {
     regenerateCount, isCoolingDown, cooldownSeconds,
     readmeNote, pendingDraft, discardPendingDraft,
   } = useGenerate();
-  const { createBlog, updateBlog, loading: saving } = useBlogs();
+  const { createBlog, updateBlog, deleteBlog, loading: saving } = useBlogs();
   const { fetchReadme } = useGitHub();
 
   const [step,         setStep]         = useState("select"); // select | generating | edit
@@ -45,14 +45,16 @@ export default function CreateBlog() {
 
     const { readme } = await fetchReadme(selectedRepo.owner, selectedRepo.name);
 
-    const blog = await generate({
+    const response = await generate({
       repoName:    selectedRepo.name,
       description: selectedRepo.description,
       language:    selectedRepo.language,
       readme, tone, isRegeneration,
     });
 
-    if (blog) {
+    if (response && response.blog) {
+      if (response.draftId) setDraftId(response.draftId);
+      const blog = response.blog;
       setTitle(blog.title || "");
       setExcerpt(blog.excerpt || "");
       setFields({
@@ -78,7 +80,7 @@ export default function CreateBlog() {
       title, content: getContent(), excerpt,
       repoName: selectedRepo.name, repoUrl: selectedRepo.url,
       repoLanguage: selectedRepo.language, category: selectedRepo.language,
-      tone, isPublished: true,
+      tone, isPublished: true, isUnfinished: false,
     };
     if (draftId) { await updateBlog(draftId, payload); }
     else { const s = await createBlog(payload); if (s) setDraftId(s._id); }
@@ -91,7 +93,7 @@ export default function CreateBlog() {
       title, content: getContent(), excerpt,
       repoName: selectedRepo.name, repoUrl: selectedRepo.url,
       repoLanguage: selectedRepo.language, category: selectedRepo.language,
-      tone, isPublished: false,
+      tone, isPublished: false, isUnfinished: false,
     };
     if (draftId) { await updateBlog(draftId, payload); }
     else { const s = await createBlog(payload); if (s) setDraftId(s._id); }
@@ -107,7 +109,7 @@ export default function CreateBlog() {
       {/* Nav */}
       <nav className="sticky top-0 z-10 bg-black border-b-2 border-neutral-900 px-10 py-4 flex items-center justify-between">
         <a href="/" className="font-barlow font-black text-lg text-white uppercase no-underline">
-          DEV<span className="text-orange-500">BLOG</span>.
+          DEV<span className="text-orange-500">BLOG.AI</span>
         </a>
         <span className="font-barlow font-black text-[10px] text-orange-500 tracking-[0.2em] uppercase">
           {step === "select" ? "01 — SELECT REPO" : "02 — EDIT & PUBLISH"}
@@ -148,9 +150,32 @@ export default function CreateBlog() {
           </div>
 
           {error && (
-            <div className="bg-red-950/30 border border-red-900 px-4 py-3 mb-6 flex items-center gap-3">
-              <span className="text-red-400">✕</span>
-              <span className="font-barlow font-bold text-xs text-red-400 tracking-[0.06em]">{error}</span>
+            <div className="bg-red-950/30 border border-red-900 px-4 py-3 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="text-red-400">✕</span>
+                <span className="font-barlow font-bold text-xs text-red-400 tracking-[0.06em]">
+                  {typeof error === "string" ? error : error.message}
+                </span>
+              </div>
+              {error.code === "DUPLICATE_REPO_BLOG" && error.existingBlogId && (
+                <div className="flex gap-2 shrink-0">
+                  <button 
+                    onClick={() => navigate(`/account`)}
+                    className="font-barlow font-bold text-[10px] tracking-widest uppercase border border-neutral-700 text-neutral-400 px-3 py-1.5 transition-colors hover:border-white hover:text-white"
+                  >
+                    GO TO DRAFTS
+                  </button>
+                  <button 
+                    onClick={async () => {
+                      await deleteBlog(error.existingBlogId);
+                      handleGenerate(false);
+                    }}
+                    className="font-barlow font-bold text-[10px] tracking-widest uppercase bg-red-500 border border-red-500 text-white px-3 py-1.5 transition-colors hover:bg-black hover:text-red-500"
+                  >
+                    DELETE & REGENERATE
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -209,7 +234,7 @@ export default function CreateBlog() {
 
       {/* ── STEP 2 — EDIT ── */}
       {step === "edit" && (
-        <div className="max-w-3xl mx-auto px-10 py-12 animate-fade-up">
+        <div className="w-full animate-fade-up" style={{ height: "calc(100vh - 74px)" }}>
           <BlogLayout
             title={title} setTitle={setTitle}
             fields={fields} setField={setField}

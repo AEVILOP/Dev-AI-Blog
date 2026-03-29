@@ -6,30 +6,12 @@ const Home = () => {
 
     return (
         <div className="w-full bg-transparent">
-            {/* Search Bar */}
-            {/* <div className="sticky top-0 z-50 bg-black text-white py-4 px-8">
-                <div className="flex justify-center">
-                    <div className="w-full max-w-2xl relative group">
-                        <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-lg blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                        <div className="relative flex items-center">
-                            <span className="absolute left-4 text-orange-400 text-lg">🔍</span>
-                            <input
-                                type="text"
-                                placeholder="⌘ SEARCH BLOGS, REPOS, DEVELOPERS..."
-                                className="w-full pl-12 pr-4 py-3 bg-gray-950 text-white border border-gray-700 hover:border-orange-400 focus:border-orange-400 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-20"
-                            />
-                            <span className="absolute right-4 text-gray-600 text-xs">ESC</span>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
             {/* Main Hero Section */}
-            <div className='relative h-screen bg-transparent text-white flex items-start justify-start overflow-hidden pt-10 lg:pt-16'>
+            <div className='relative min-h-[85vh] bg-transparent text-white flex items-center justify-start overflow-hidden pt-10 lg:pt-16'>
 
                 {/* Watermark Background with Border Text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <h2 className="text-[15vw] sm:text-[10vw] font-black text-black leading-none whitespace-nowrap [text-stroke:2px_rgba(107,114,128,0.3)] sm:[text-stroke:1.5px_rgba(107,114,128,0.2)] [-webkit-text-stroke:2px_rgba(107,114,128,0.3)] sm:[-webkit-text-stroke:1.5px_rgba(107,114,128,0.2)] tracking-widest">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 lg:opacity-100">
+                    <h2 className="text-[20vw] lg:text-[12vw] font-black text-transparent leading-none whitespace-nowrap [webkit-text-stroke:2px_rgba(107,114,128,0.2)]">
                         DEVBLOG.AI
                     </h2>
                 </div>
@@ -59,16 +41,16 @@ const Home = () => {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                        <button onClick={() => navigate('/create')} className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none cursor-pointer focus:ring-orange-300 dark:focus:ring-black font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-white w-full sm:w-auto">
+                        <button onClick={() => navigate('/create')} className="font-barlow font-black text-[13px] tracking-widest uppercase border-2 border-orange-500 bg-orange-500 text-black px-8 py-4 cursor-pointer transition-all duration-150 hover:bg-black hover:text-orange-500">
                             GENERATE BLOG →
                         </button>
-                        <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="text-orange-400 bg-linear-to-br from-gray-800 to-black rounded-2xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none cursor-pointer focus:ring-orange-300 dark:focus:ring-black font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base uppercase tracking-wider transition-all hover:text-orange-300 w-full sm:w-auto border-2 border-orange-500">
-                            BROWSE
+                        <button onClick={() => navigate('/explore')} className="font-barlow font-black text-[13px] tracking-widest uppercase border-2 border-orange-500 text-orange-500 bg-transparent px-8 py-4 cursor-pointer transition-all duration-150 hover:bg-orange-500 hover:text-black">
+                            EXPLORE
                         </button>
                     </div>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
 

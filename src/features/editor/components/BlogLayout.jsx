@@ -10,10 +10,10 @@ export default function BlogLayout({
   extras
 }) {
   return (
-    <div className="flex h-screen bg-black text-white">
+    <div className="flex flex-col lg:flex-row h-full w-full bg-black text-white">
 
       {/* LEFT SIDE — EDITOR & SETTINGS */}
-      <div className="w-1/2 border-r border-neutral-900 overflow-y-auto p-10 flex flex-col justify-between">
+      <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-neutral-900 overflow-y-auto p-6 md:p-10 flex flex-col justify-between">
         
         <div className="space-y-8">
           {extras.error && (
@@ -63,7 +63,7 @@ export default function BlogLayout({
       </div>
 
       {/* RIGHT SIDE — PREVIEW RE-RENDER */}
-      <div className="w-1/2 overflow-y-auto bg-neutral-950 p-10">
+      <div className="w-full lg:w-7/12 overflow-y-auto bg-neutral-950 p-6 md:p-10">
         <BlogPreview 
           title={title}
           fields={fields}

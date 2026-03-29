@@ -48,7 +48,7 @@ export default function NotFound() {
             {/* Logo */}
             <a href="/"
                 className="absolute bottom-8 font-barlow font-black text-base text-neutral-900 uppercase no-underline tracking-tight transition-colors duration-150 hover:text-white">
-                DEV<span className="text-orange-500">BLOG</span>.AI
+                DEV<span className="text-orange-500">BLOG.AI</span>
             </a>
         </div>
     );

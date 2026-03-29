@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ORANGE = '#f97316'
 const DIM = '#1a1a1a'
@@ -22,7 +22,7 @@ const GeoPanel = () => {
 
                 {/* Logo */}
                 <Link to="/" className="font-black text-[22px] text-white uppercase tracking-tight no-underline">
-                    DEV<span className="text-orange-400">BLOG</span>.AI
+                    DEV<span className="text-orange-400">BLOG.AI</span>
                 </Link>
 
                 {/* Main text */}
@@ -55,9 +55,16 @@ const GeoPanel = () => {
 import { useAuth } from '../auth/AuthContext'
 
 const LoginPanel = () => {
-    const { login } = useAuth()
+    const { login, user } = useAuth()
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [showError] = useState(false)
+
+    React.useEffect(() => {
+        if (user) {
+            navigate('/home');
+        }
+    }, [user, navigate]);
 
     const handleLogin = () => {
         setLoading(true)
