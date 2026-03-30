@@ -5,7 +5,7 @@ import { useBlogs } from "../blog/hooks/useBlogs";
 import { useGitHub } from "../github/hooks/useGitHub";
 
 export default function AccountSettings() {
-  const { user, logout } = useAuth();
+  const { user, loading, logout } = useAuth();
   const { fetchMyBlogs, deleteBlog, togglePublish, loading: blogsOpLoading } = useBlogs();
   const { repos, fetchRepos, loading: reposLoading } = useGitHub();
   const navigate = useNavigate();
@@ -17,12 +17,27 @@ export default function AccountSettings() {
   const [confirmDel, setConfirmDel] = useState(null);
 
   useEffect(() => {
+    if (loading || !user) {
+      return;
+    }
+
+    let mounted = true;
+
     fetchMyBlogs()
-      .then(data => { if (data) setBlogs(data); })
+      .then((data) => {
+        if (mounted && data) setBlogs(data);
+      })
       .catch(() => {})
-      .finally(() => setFetchingBlogs(false));
+      .finally(() => {
+        if (mounted) setFetchingBlogs(false);
+      });
+
     fetchRepos().catch(() => {});
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    return () => {
+      mounted = false;
+    };
+  }, [loading, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const published = blogs.filter(b => b.isPublished);
   const drafts    = blogs.filter(b => !b.isPublished);

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://dev-ai-blog-backend.onrender.com",
-  withCredentials: true, // 🔥 THIS IS THE FIX
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000",
+  withCredentials: true,
 });
 
-export default api;
+export default api;

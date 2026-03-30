@@ -11,6 +11,7 @@ import Explore from '../features/blog/pages/Explore';
 import BlogDetail from '../features/blog/pages/BlogDetail';
 import CreateBlog from '../features/editor/pages/CreateBlog';
 import AccountSettings from '../features/account/AccountSettings';
+import ProtectedRoute from '../shared/components/ProtectedRoute';
 
 export default function AppRoutes() {
   return (
@@ -34,9 +35,9 @@ export default function AppRoutes() {
       } />
       
       <Route path="/create" element={
-        <>
+        <ProtectedRoute>
           <CreateBlog />
-        </>
+        </ProtectedRoute>
       } />
 
       <Route path="/blog/:id" element={
@@ -47,10 +48,12 @@ export default function AppRoutes() {
       } />
 
       <Route path="/account" element={
-        <>
-          <Navbar />
-          <AccountSettings />
-        </>
+        <ProtectedRoute>
+          <>
+            <Navbar />
+            <AccountSettings />
+          </>
+        </ProtectedRoute>
       } />
 
     </Routes>
