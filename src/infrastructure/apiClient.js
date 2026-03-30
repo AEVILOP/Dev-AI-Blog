@@ -1,22 +1,8 @@
-// TODO: Implement apiClient (Axios/Fetch wrapper)
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-console.log("API Client initialized with baseURL:", baseURL);
-
-const apiClient = axios.create({
-  baseURL,
-  withCredentials: true, // sends session cookie on every request
+const api = axios.create({
+  baseURL: "https://dev-ai-blog-backend.onrender.com",
+  withCredentials: true, // 🔥 THIS IS THE FIX
 });
 
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      console.warn("Session expired or not authenticated");
-    }
-    return Promise.reject(error);
-  }
-);
-
-export default apiClient;
+export default api;
