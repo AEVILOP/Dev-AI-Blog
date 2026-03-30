@@ -37,9 +37,9 @@ const Explore = () => {
             <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b-2 border-neutral-900 py-4 px-8 transition-colors">
                 <div className="flex justify-center">
                     <div className="w-full max-w-2xl relative group">
-                        <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-3xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-linear-to-r from-orange-500 to-orange-500 rounded-3xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
                         <div className="relative flex items-center">
-                            <span className="absolute left-4 text-orange-400 text-lg">🔍</span>
+                            <span className="absolute left-4 text-orange-500 text-lg">🔍</span>
                             <input
                                 type="text"
                                 value={searchTerm}

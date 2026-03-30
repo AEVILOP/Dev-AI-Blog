@@ -24,7 +24,7 @@ export default function BlogLayout({
           
           {extras.readmeNote && (
             <div className="px-4 py-3 bg-orange-950/20 border border-orange-900/40">
-              <span className="font-barlow font-bold text-xs text-orange-400">{extras.readmeNote}</span>
+              <span className="font-barlow font-bold text-xs text-orange-500">{extras.readmeNote}</span>
             </div>
           )}
 

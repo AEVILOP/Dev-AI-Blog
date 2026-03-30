@@ -17,13 +17,13 @@ export default function ToneSelector({ value, onChange }) {
             onClick={() => onChange(tone.id)}
             className={`group relative flex-1 p-6 text-left cursor-pointer transition-all duration-300 rounded-3xl overflow-hidden border
               ${value === tone.id
-                ? "bg-linear-to-br from-orange-500/10 to-transparent border-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.15)] ring-1 ring-orange-500/30"
+                ? "bg-linear-to-br from-orange-500/10 to-transparent border-orange-500 shadow-[0_0_20px_rgba(234,88,12,0.15)] ring-1 ring-orange-500/30"
                 : "bg-neutral-950/40 border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/80 hover:-translate-y-1 hover:shadow-lg"
               }`}
           >
             {/* Active Glow Accent */}
             {value === tone.id && (
-              <div className="absolute top-0 left-0 w-1 h-full bg-orange-500 shadow-[0_0_10px_#f97316]" />
+              <div className="absolute top-0 left-0 w-1 h-full bg-orange-500 shadow-[0_0_10px_#ea580c]" />
             )}
 
             <div className="relative z-10">
@@ -32,7 +32,7 @@ export default function ToneSelector({ value, onChange }) {
                 {tone.icon}
               </div>
               <div className={`font-barlow font-black text-lg uppercase tracking-wider mb-2 transition-colors duration-300
-                ${value === tone.id ? "text-orange-400" : "text-white group-hover:text-neutral-200"}`}>
+                ${value === tone.id ? "text-orange-500" : "text-white group-hover:text-neutral-200"}`}>
                 {tone.label}
               </div>
               <div className={`text-xs leading-relaxed transition-colors duration-300

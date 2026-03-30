@@ -9,7 +9,7 @@ const GHIcon = () => (
 );
 
 const CheckIcon = () => (
-  <span className="text-[#f97316] font-bold shrink-0">✓</span>
+  <span className="text-orange-500 font-bold shrink-0">✓</span>
 );
 
 export default function Login() {
@@ -32,23 +32,25 @@ export default function Login() {
     const errorParam = params.get('error');
 
     if (errorParam) {
-      if (errorParam === 'oauth_failed') {
-        setErrorBanner("GitHub login failed. Please try again.");
-        setBannerType('error');
-      } else if (errorParam === 'access_denied') {
-        setErrorBanner("You denied access. Login requires GitHub authorization.");
-        setBannerType('warning');
-      } else if (errorParam === 'session_failed') {
-        setErrorBanner("Session error. Please try again.");
-        setBannerType('error');
-      }
+      // Use setTimeout to move the state update out of the synchronous execution block
+      // and avoid the "cascading render" warning.
+      setTimeout(() => {
+        if (errorParam === 'oauth_failed') {
+          setErrorBanner("GitHub login failed. Please try again.");
+          setBannerType('error');
+        } else if (errorParam === 'access_denied') {
+          setErrorBanner("You denied access. Login requires GitHub authorization.");
+          setBannerType('warning');
+        } else if (errorParam === 'session_failed') {
+          setErrorBanner("Session error. Please try again.");
+          setBannerType('error');
+        }
+      }, 0);
 
-      // Clear params without reloading
-      const url = new URL(window.location);
-      url.searchParams.delete('error');
-      window.history.replaceState({}, '', url);
+      // Clean up the URL
+      navigate(location.pathname, { replace: true });
     }
-  }, [location.search]);
+  }, [location.search, location.pathname, navigate]);
 
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
@@ -81,8 +83,8 @@ export default function Login() {
 
       {/* TOP SECTION */}
       <div className="text-center mb-10">
-        <h1 className="font-barlow font-black text-6xl text-[#f97316] uppercase tracking-widest leading-none mb-3">
-          DevBlog
+        <h1 className="font-barlow font-black text-6xl text-orange-500 uppercase tracking-widest leading-none mb-3">
+          DevBlog.AI
         </h1>
         <p className="text-[#999999] text-base font-medium tracking-wide">
           Turn your GitHub repos into developer blogs — in seconds.
@@ -100,7 +102,7 @@ export default function Login() {
             className={`w-full h-12 min-h-[48px] px-6 flex items-center justify-center gap-3 font-bold text-[16px] transition-colors rounded ${
               isAnyLoading 
                 ? 'bg-[#333333] text-[#666666] cursor-not-allowed' 
-                : 'bg-[#f97316] text-[#000000] hover:bg-[#ff8a3d]'
+                : 'bg-orange-500 text-black hover:bg-orange-500/90'
             }`}
           >
             {loadingType === 'public' ? (
@@ -132,7 +134,7 @@ export default function Login() {
             className={`w-full h-12 min-h-[48px] px-6 flex items-center justify-center gap-3 font-bold text-[16px] bg-transparent border border-[#555555] transition-colors rounded ${
               isAnyLoading 
                 ? 'text-[#666666] cursor-not-allowed' 
-                : 'text-[#ffffff] hover:border-[#ffffff]'
+                : 'text-[#ffffff] hover:border-orange-500/50 hover:text-orange-500'
             }`}
           >
             {loadingType === 'full' ? (

@@ -13,8 +13,8 @@ const Home = () => {
                 <div className="relative z-10 w-full max-w-2xl">
 
                     {/* Watermark Label */}
-                    <div className="flex items-center space-x-2 mb-8 sm:mb-12 text-orange-400">
-                        <div className="w-8 h-1 bg-orange-400"></div>
+                    <div className="flex items-center space-x-2 mb-8 sm:mb-12 text-orange-500">
+                        <div className="w-8 h-1 bg-orange-500"></div>
                         <span className="text-xs sm:text-sm font-bold uppercase tracking-widest">
                             AI-POWERED GITHUB BLOG GENERATOR
                         </span>
@@ -24,7 +24,7 @@ const Home = () => {
                     <h1 className="text-6xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 sm:mb-8 tracking-tight">
                         <span className="block text-white">YOUR CODE</span>
                         <span className="block text-white">DESERVES TO</span>
-                        <span className="block text-orange-400">BE READ.</span>
+                        <span className="block text-orange-500">BE READ.</span>
                     </h1>
 
                     {/* Description */}
@@ -88,7 +88,7 @@ const Home = () => {
                         {/* 3. Published Blog Card */}
                         <div className="absolute bottom-6 right-0 bg-[#0a0a0a] border-2 border-orange-500 rounded-3xl p-5 w-72 z-30 transform rotate-2 transition-transform hover:rotate-0 hover:scale-105 duration-300 shadow-[0_0_30px_rgba(234,88,12,0.15)] flex flex-col gap-4">
                             <div className="flex gap-3 items-center border-b border-neutral-800 pb-4">
-                                <div className="w-10 h-10 rounded-full bg-linear-to-br from-orange-400 to-orange-600 shadow-[0_0_10px_rgba(234,88,12,0.5)]"></div>
+                                <div className="w-10 h-10 rounded-full bg-linear-to-br from-orange-500 to-orange-600 shadow-[0_0_10px_rgba(234,88,12,0.5)]"></div>
                                 <div className="flex flex-col gap-1">
                                     <div className="font-barlow font-black text-white uppercase text-sm tracking-widest leading-none">Adding AI Engine</div>
                                     <div className="text-neutral-500 text-[10px] uppercase font-bold tracking-wider">DevBlog Generated</div>

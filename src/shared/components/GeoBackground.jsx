@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-const ORANGE = '#f97316'
+const ORANGE = '#ea580c'
 const DIM = '#1a1a1a'
 
 const useGeoCanvas = (canvasRef) => {

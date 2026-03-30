@@ -125,7 +125,7 @@ export default function CreateBlog() {
       {/* Pending draft warning */}
       {pendingDraft && (
         <div className="bg-orange-950/20 border-b border-orange-900/40 px-10 py-3.5 flex items-center justify-between">
-          <span className="font-barlow font-bold text-xs text-orange-400 tracking-[0.08em]">
+          <span className="font-barlow font-bold text-xs text-orange-500 tracking-[0.08em]">
             ⚠ Unfinished blog from {new Date(pendingDraft.createdAt).toLocaleDateString()} — "{pendingDraft.repoName}"
           </span>
           <button

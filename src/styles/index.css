@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-orange-400: #fb923c;
   --color-orange-500: #ea580c;
   --color-orange-600: #c2410c;
+}
+
+@theme {
+  --color-orange-400: var(--color-orange-400);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-600: var(--color-orange-600);
 }
 
 @keyframes marquee {
@@ -50,14 +56,46 @@
   }
 }
 
-/* Hide Scrollbar */
-html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* Universal Sleek Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
 }
 
-html::-webkit-scrollbar {
-  display: none;
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #ea580c;
+}
+
+/* Explicit Custom Scrollbar Class */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
 }
 
 /* Login page animations */
@@ -86,20 +124,4 @@ html::-webkit-scrollbar {
 
 .login-spin {
   animation: spin 0.8s linear infinite;
-}
-
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #f97316;
 }

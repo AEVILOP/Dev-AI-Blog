@@ -126,7 +126,7 @@ export default function AccountSettings() {
                           <div className="font-barlow font-black text-lg text-white uppercase tracking-tight truncate">{repo.name}</div>
                           {repo.description && <div className="text-xs text-neutral-500 truncate mt-1">{repo.description}</div>}
                       </div>
-                      <button onClick={() => navigate('/create')} className="shrink-0 font-barlow font-bold text-[10px] tracking-widest uppercase border-2 border-orange-500/20 text-orange-400 rounded-3xl px-5 py-2.5 hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-colors bg-transparent">
+                      <button onClick={() => navigate('/create')} className="shrink-0 font-barlow font-bold text-[10px] tracking-widest uppercase border-2 border-orange-500/20 text-orange-500 rounded-3xl px-5 py-2.5 hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-colors bg-transparent">
                           Generate Blog
                       </button>
                   </div>
@@ -305,7 +305,7 @@ export default function AccountSettings() {
   return (
     <div className="flex min-h-[calc(100vh-66px)] bg-transparent text-white">
       {/* SIDEBAR */}
-      <div className="hidden lg:flex w-64 border-r-2 border-neutral-900 bg-black flex-col py-8 px-6 shrink-0 h-[calc(100vh-66px)] sticky top-[66px] overflow-y-auto">
+      <div className="hidden lg:flex w-64 border-r-2 border-neutral-900 bg-black flex-col py-8 px-6 shrink-0 h-[calc(100vh-66px)] sticky top-[66px] overflow-y-auto custom-scrollbar">
           
           {/* User Profile */}
           <div className="mb-10 text-center">
@@ -360,7 +360,7 @@ export default function AccountSettings() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 w-full bg-transparent overflow-x-hidden pt-16 lg:pt-0">
+      <div className="flex-1 w-full bg-transparent overflow-x-hidden pt-16 lg:pt-0 overflow-y-auto custom-scrollbar">
          <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12">
             {activeTab === "dashboard" && renderDashboard()}
             {activeTab === "blogs" && renderBlogs()}

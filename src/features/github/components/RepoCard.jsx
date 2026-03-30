@@ -5,7 +5,7 @@ const LANG_COLORS = {
 };
 
 export default function RepoCard({ repo, onSelect }) {
-  const langColor = LANG_COLORS[repo.language] || "#f97316";
+  const langColor = LANG_COLORS[repo.language] || "#ea580c";
 
   return (
     <div

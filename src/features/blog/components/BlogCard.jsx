@@ -7,7 +7,7 @@ const LANG_COLORS = {
 
 export default function BlogCard({ blog }) {
     const navigate = useNavigate();
-    const langColor = LANG_COLORS[blog.repoLanguage] || "#f97316";
+    const langColor = LANG_COLORS[blog.repoLanguage] || "#ea580c";
     const date = new Date(blog.createdAt).toLocaleDateString("en-US", {
         month: "short", day: "numeric", year: "numeric",
     });
