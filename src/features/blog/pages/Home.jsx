@@ -266,8 +266,8 @@ const Home = () => {
                         <div className="flex flex-col gap-4">
                             <h4 className="font-barlow text-xs font-bold uppercase tracking-widest text-white">Connect</h4>
                             <div className="flex flex-col gap-3 text-sm text-neutral-500">
-                                <span className="block cursor-pointer transition-colors hover:text-orange-500">Twitter / X</span>
-                                <span className="block cursor-pointer transition-colors hover:text-orange-500">GitHub Repository</span>
+                                <a href="https://x.com/Anirban4810" target="_blank" rel="noreferrer" className="block transition-colors hover:text-orange-500 no-underline text-neutral-500">Twitter / X</a>
+                                <a href="https://github.com/AEVILOP" target="_blank" rel="noreferrer" className="block transition-colors hover:text-orange-500 no-underline text-neutral-500">GitHub Profile</a>
                                 <span className="block cursor-pointer transition-colors hover:text-orange-500">Support</span>
                             </div>
                         </div>
