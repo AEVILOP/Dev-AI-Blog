@@ -63,11 +63,11 @@ export default function AccountSettings() {
   // --- RENDERS ---
   const renderDashboard = () => (
     <div className="animate-fade-up">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="font-barlow font-black text-4xl uppercase tracking-widest text-white">Dashboard</h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+        <h1 className="font-barlow font-black text-3xl sm:text-4xl uppercase tracking-widest text-white">Dashboard</h1>
         <button
             onClick={() => navigate("/create")}
-            className="font-barlow font-black text-[13px] tracking-widest uppercase border-2 border-orange-500 rounded-3xl bg-orange-500 text-black px-6 py-3 cursor-pointer transition-all duration-150 hover:bg-black hover:text-orange-500"
+            className="w-full sm:w-auto font-barlow font-black text-[12px] sm:text-[13px] tracking-widest uppercase border-2 border-orange-500 rounded-3xl bg-orange-500 text-black px-6 py-3 cursor-pointer transition-all duration-150 hover:bg-black hover:text-orange-500"
           >
             + NEW BLOG
         </button>
@@ -159,7 +159,7 @@ export default function AccountSettings() {
 
   const renderBlogs = () => (
     <div className="animate-fade-up">
-       <div className="font-barlow font-black text-4xl uppercase tracking-widest text-white mb-10">Your Blogs</div>
+       <div className="font-barlow font-black text-3xl sm:text-4xl uppercase tracking-widest text-white mb-10">Your Blogs</div>
         {/* Tabs */}
         <div className="flex border-b-2 border-neutral-900 mb-8">
           {["published", "drafts"].map(tab => (
@@ -268,7 +268,7 @@ export default function AccountSettings() {
 
   const renderSettings = () => (
     <div className="animate-fade-up max-w-xl">
-       <div className="font-barlow font-black text-4xl uppercase tracking-widest text-white mb-10">Account Settings</div>
+       <div className="font-barlow font-black text-3xl sm:text-4xl uppercase tracking-widest text-white mb-10">Account Settings</div>
        <div className="border-2 border-neutral-900 rounded-3xl p-8 bg-neutral-950">
           <div className="flex items-center gap-6 mb-8">
             {user?.avatarUrl && <img src={user.avatarUrl} alt="Avatar" className="w-16 h-16 rounded-full border-2 border-neutral-800" />}
@@ -291,7 +291,7 @@ export default function AccountSettings() {
 
   const renderRepos = () => (
      <div className="animate-fade-up">
-       <div className="font-barlow font-black text-4xl uppercase tracking-widest text-white mb-10">Your Repositories</div>
+       <div className="font-barlow font-black text-3xl sm:text-4xl uppercase tracking-widest text-white mb-10">Your Repositories</div>
        {reposLoading ? (
           <div className="flex justify-center py-16"><div className="w-6 h-6 border-2 border-neutral-800 border-t-orange-500 rounded-full animate-spin-orange" /></div>
        ) : repos.length === 0 ? (
@@ -318,7 +318,7 @@ export default function AccountSettings() {
   );
 
   return (
-    <div className="flex min-h-[calc(100vh-66px)] bg-transparent text-white">
+    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-66px)] bg-transparent text-white">
       {/* SIDEBAR */}
       <div className="hidden lg:flex w-64 border-r-2 border-neutral-900 bg-black flex-col py-8 px-6 shrink-0 h-[calc(100vh-66px)] sticky top-[66px] overflow-y-auto custom-scrollbar">
           
@@ -357,7 +357,7 @@ export default function AccountSettings() {
       </div>
 
       {/* MOBILE NAV (Dropdown) */}
-      <div className="lg:hidden w-full border-b-2 border-neutral-900 p-4 absolute top-[66px] bg-black z-10 flex gap-2 overflow-x-auto no-scrollbar">
+      <div className="lg:hidden w-full border-b-2 border-neutral-900 px-4 py-3 bg-black flex gap-2 overflow-x-auto no-scrollbar">
           {[
             { id: "dashboard", label: "Dashboard" },
             { id: "settings", label: "Settings" },
@@ -375,8 +375,8 @@ export default function AccountSettings() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 w-full bg-transparent overflow-x-hidden pt-16 lg:pt-0 overflow-y-auto custom-scrollbar">
-         <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12">
+      <div className="flex-1 w-full bg-transparent overflow-x-hidden overflow-y-auto custom-scrollbar">
+         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-12">
             {activeTab === "dashboard" && renderDashboard()}
             {activeTab === "blogs" && renderBlogs()}
             {activeTab === "settings" && renderSettings()}
