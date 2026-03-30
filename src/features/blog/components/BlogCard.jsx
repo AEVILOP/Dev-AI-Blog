@@ -15,10 +15,10 @@ export default function BlogCard({ blog }) {
     return (
         <div
             onClick={() => navigate(`/blog/${blog._id}`)}
-            className="relative bg-black border-2 border-neutral-900 p-7 cursor-pointer transition-colors duration-150 hover:border-orange-500 flex flex-col gap-4 overflow-hidden group"
+            className="relative bg-black border-2 border-neutral-900 rounded-3xl p-7  cursor-pointer transition-colors duration-150 hover:border-orange-500 flex flex-col gap-4 overflow-hidden group"
         >
             {/* Top orange accent */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r  from-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
 
             {/* Language + date */}
             <div className="flex items-center justify-between">

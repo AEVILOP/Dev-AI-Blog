@@ -2,11 +2,11 @@
 
 export default function BlogPreview({ title, fields, repoLanguage, tone }) {
   const sections = [
-    { label: "WHAT IT DOES",    content: fields.whatItDoes,     accent: false },
-    { label: "TECH STACK",      content: fields.techStack,      accent: true  },
-    { label: "CHALLENGES",      content: fields.challenges,     accent: false },
-    { label: "GETTING STARTED", content: fields.gettingStarted, accent: false, border: true },
-    { label: "FINAL THOUGHTS",  content: fields.conclusion,     accent: false },
+    { label: fields.whatItDoesHeading ?? "WHAT IT DOES",    content: fields.whatItDoes,     accent: false },
+    { label: fields.techStackHeading ?? "TECH STACK",      content: fields.techStack,      accent: true  },
+    { label: fields.challengesHeading ?? "CHALLENGES",      content: fields.challenges,     accent: false },
+    { label: fields.gettingStartedHeading ?? "GETTING STARTED", content: fields.gettingStarted, accent: false, border: true },
+    { label: fields.conclusionHeading ?? "FINAL THOUGHTS",  content: fields.conclusion,     accent: false },
   ];
 
   return (
@@ -40,7 +40,7 @@ export default function BlogPreview({ title, fields, repoLanguage, tone }) {
         </p>
       )}
 
-      <div className="w-full h-px bg-gradient-to-r from-orange-500 to-transparent" />
+      <div className="w-full h-px bg-linear-to-r from-orange-500 to-transparent" />
 
       {/* Content sections */}
       {sections.map(({ label, content, accent, border }) => {

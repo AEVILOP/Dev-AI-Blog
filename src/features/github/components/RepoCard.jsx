@@ -10,7 +10,7 @@ export default function RepoCard({ repo, onSelect }) {
   return (
     <div
       onClick={() => onSelect(repo)}
-      className="bg-black border-2 border-neutral-900 p-5 cursor-pointer
+      className="bg-black border-2 border-neutral-900 rounded-3xl p-5 cursor-pointer
         transition-colors duration-150 hover:border-orange-500 flex flex-col gap-2.5"
     >
       <div className="font-barlow font-black text-base text-white uppercase tracking-tight">{repo.name}</div>

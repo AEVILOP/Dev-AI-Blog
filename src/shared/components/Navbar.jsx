@@ -26,7 +26,7 @@ const Navbar = () => {
                 <div className="flex items-center space-x-4">
                     {user ? (
                         <>
-                            <Link to="/create" className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-lg hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-4 py-2 text-xs uppercase tracking-wider transition-all hover:text-white no-underline inline-block">
+                            <Link to="/create" className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-3xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-4 py-2 text-xs uppercase tracking-wider transition-all hover:text-white no-underline inline-block">
                                 + CREATE BLOG
                             </Link>
                             <Link to="/account" className="flex items-center pl-2">
@@ -39,7 +39,7 @@ const Navbar = () => {
                         </>
                     ) : (
                         <>
-                            <button onClick={login} className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-lg hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-4 py-2 text-xs uppercase tracking-wider transition-all hover:text-white no-underline inline-block cursor-pointer">
+                            <button onClick={login} className="text-black bg-linear-to-br from-orange-400 to-orange-400 rounded-3xl hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-700 font-bold px-4 py-2 text-xs uppercase tracking-wider transition-all hover:text-white no-underline inline-block cursor-pointer">
                                 SIGN IN WITH GITHUB
                             </button>
                         </>

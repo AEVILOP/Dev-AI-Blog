@@ -13,7 +13,7 @@ export default function BlogLayout({
     <div className="flex flex-col lg:flex-row h-full w-full bg-black text-white">
 
       {/* LEFT SIDE — EDITOR & SETTINGS */}
-      <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-neutral-900 overflow-y-auto p-6 md:p-10 flex flex-col justify-between">
+      <div className="w-full lg:w-5/12 border-b lg:border-b-0 lg:border-r border-neutral-900 overflow-y-auto p-6 md:p-10 flex flex-col justify-between custom-scrollbar">
         
         <div className="space-y-8">
           {extras.error && (
@@ -45,7 +45,7 @@ export default function BlogLayout({
               <button
                 onClick={actions.onSaveDraft}
                 disabled={actions.saving}
-                className="font-barlow font-black text-xs tracking-widest uppercase border border-neutral-800 text-neutral-400 px-6 py-3 hover:text-white hover:border-neutral-600 transition-colors"
+                className="font-barlow font-black text-xs tracking-widest uppercase border border-neutral-800 text-neutral-400 px-6 py-3 hover:text-white hover:border-neutral-600 transition-colors rounded-3xl"
               >
                 SAVE DRAFT
               </button>
@@ -53,7 +53,7 @@ export default function BlogLayout({
               <button
                 onClick={actions.onPublish}
                 disabled={actions.saving}
-                className="font-barlow font-black text-xs tracking-widest uppercase bg-orange-500 text-black px-6 py-3 hover:bg-black hover:text-orange-500 border border-orange-500 transition-colors"
+                className="font-barlow font-black text-xs tracking-widest uppercase bg-orange-500 text-black px-6 py-3 hover:bg-black hover:text-orange-500 border border-orange-500 transition-colors rounded-3xl"
               >
                 PUBLISH
               </button>
@@ -63,7 +63,7 @@ export default function BlogLayout({
       </div>
 
       {/* RIGHT SIDE — PREVIEW RE-RENDER */}
-      <div className="w-full lg:w-7/12 overflow-y-auto bg-neutral-950 p-6 md:p-10">
+      <div className="w-full lg:w-7/12 overflow-y-auto bg-neutral-950 p-6 md:p-10 custom-scrollbar">
         <BlogPreview 
           title={title}
           fields={fields}

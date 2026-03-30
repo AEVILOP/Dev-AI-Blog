@@ -15,7 +15,7 @@ export default function ToneSelector({ value, onChange }) {
           <button
             key={tone.id}
             onClick={() => onChange(tone.id)}
-            className={`group relative flex-1 p-6 text-left cursor-pointer transition-all duration-300 rounded-2xl overflow-hidden border
+            className={`group relative flex-1 p-6 text-left cursor-pointer transition-all duration-300 rounded-3xl overflow-hidden border
               ${value === tone.id
                 ? "bg-linear-to-br from-orange-500/10 to-transparent border-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.15)] ring-1 ring-orange-500/30"
                 : "bg-neutral-950/40 border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/80 hover:-translate-y-1 hover:shadow-lg"

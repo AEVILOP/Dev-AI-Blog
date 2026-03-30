@@ -16,15 +16,15 @@ export default function AppRoutes() {
   return (
     <Routes>
       {/* Public / Landing */}
-      <Route path="/" element={<Login />} />
-
-      {/* Main Pages (With Navbar) */}
-      <Route path="/home" element={
+      <Route path="/" element={
         <>
           <Navbar />
           <Home />
         </>
       } />
+
+      {/* Auth */}
+      <Route path="/login" element={<Login />} />
 
       <Route path="/explore" element={
         <>

@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = () => {
-    window.location.href = `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/auth/github`;
+    window.location.href = "/login";
   };
 
   const logout = async () => {

@@ -37,7 +37,7 @@ const Explore = () => {
             <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b-2 border-neutral-900 py-4 px-8 transition-colors">
                 <div className="flex justify-center">
                     <div className="w-full max-w-2xl relative group">
-                        <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-lg blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                        <div className="absolute inset-0 bg-linear-to-r from-orange-400 to-orange-400 rounded-3xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
                         <div className="relative flex items-center">
                             <span className="absolute left-4 text-orange-400 text-lg">🔍</span>
                             <input
@@ -45,7 +45,7 @@ const Explore = () => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 placeholder="⌘ SEARCH BLOGS, REPOS, DEVELOPERS..."
-                                className="w-full pl-12 pr-4 py-3 bg-black/60 text-white font-barlow font-bold uppercase tracking-widest border border-neutral-800 hover:border-orange-500/50 focus:border-orange-500 transition-all focus:outline-none placeholder:text-neutral-600 focus:bg-black"
+                                className="w-full pl-12 pr-4 py-3 bg-black/60 text-white font-barlow font-bold uppercase tracking-widest border border-neutral-800 rounded-3xl hover:border-orange-500/50 focus:border-orange-500 transition-all focus:outline-none placeholder:text-neutral-600 focus:bg-black"
                             />
                         </div>
                     </div>
@@ -68,7 +68,7 @@ const Explore = () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {blogs.map(blog => (
-                            <div key={blog._id} className="group relative bg-black/40 backdrop-blur-md border-2 border-neutral-900 p-6 flex flex-col transition-all duration-300 hover:border-orange-500/50">
+                            <div key={blog._id} className="group relative bg-black/40 backdrop-blur-md border-2 border-neutral-900 rounded-3xl p-6 flex flex-col transition-all duration-300 hover:border-orange-500/50">
                                 <div className="absolute inset-0 bg-linear-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                                 
                                 <div className="flex justify-between items-start mb-4">
@@ -117,7 +117,7 @@ const Explore = () => {
                         <button 
                             disabled={page === 1} 
                             onClick={() => setPage(p => p - 1)}
-                            className="font-barlow font-bold text-xs tracking-widest uppercase border border-neutral-800 px-4 py-2 text-neutral-400 disabled:opacity-30 hover:border-white hover:text-white transition-all disabled:hover:border-neutral-800 disabled:hover:text-neutral-400"
+                            className="font-barlow font-bold text-xs tracking-widest uppercase border border-neutral-800 rounded-3xl px-4 py-2 text-neutral-400 disabled:opacity-30 hover:border-white hover:text-white transition-all disabled:hover:border-neutral-800 disabled:hover:text-neutral-400"
                         >
                             ← PREV
                         </button>
@@ -127,7 +127,7 @@ const Explore = () => {
                         <button 
                             disabled={page === totalPages} 
                             onClick={() => setPage(p => p + 1)}
-                            className="font-barlow font-bold text-xs tracking-widest uppercase border border-neutral-800 px-4 py-2 text-neutral-400 disabled:opacity-30 hover:border-white hover:text-white transition-all disabled:hover:border-neutral-800 disabled:hover:text-neutral-400"
+                            className="font-barlow font-bold text-xs tracking-widest uppercase border border-neutral-800 rounded-3xl px-4 py-2 text-neutral-400 disabled:opacity-30 hover:border-white hover:text-white transition-all disabled:hover:border-neutral-800 disabled:hover:text-neutral-400"
                         >
                             NEXT →
                         </button>

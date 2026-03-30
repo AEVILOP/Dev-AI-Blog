@@ -116,7 +116,7 @@ export default function CreateBlog() {
         </span>
         <button
           onClick={() => navigate(-1)}
-          className="font-barlow font-black text-[11px] tracking-[0.14em] uppercase border-2 border-neutral-900 text-neutral-700 px-3.5 py-2 cursor-pointer transition-all duration-150 hover:border-white hover:text-white"
+          className="font-barlow  rounded-3xl font-black text-[11px] tracking-[0.14em] uppercase border-2 border-neutral-900 text-neutral-700 px-3.5 py-2 cursor-pointer transition-all duration-150 hover:border-white hover:text-white"
         >
           CANCEL
         </button>
@@ -200,7 +200,7 @@ export default function CreateBlog() {
             ) : (
               <button
                 onClick={() => setShowModal(true)}
-                className="w-full border-2 border-dashed border-neutral-900 p-7 cursor-pointer text-center transition-colors duration-150 hover:border-orange-500 bg-transparent"
+                className="w-full border-2 border-dashed rounded-3xl border-neutral-900 p-7 cursor-pointer text-center transition-colors duration-150 hover:border-orange-500 bg-transparent"
               >
                 <div className="font-barlow font-black text-sm text-neutral-700 tracking-[0.1em] uppercase">+ SELECT A REPOSITORY</div>
                 <div className="text-xs text-neutral-900 mt-1.5">Choose from your GitHub repos</div>
@@ -220,8 +220,8 @@ export default function CreateBlog() {
             disabled={!selectedRepo || loading}
             className={`w-full font-barlow font-black text-base tracking-[0.1em] uppercase py-5 transition-all duration-150 border-2
               ${!selectedRepo
-                ? "border-neutral-900 text-neutral-900 cursor-not-allowed bg-transparent"
-                : "border-orange-500 bg-orange-500 text-black cursor-pointer hover:bg-black hover:text-orange-500"}`}
+                ? "border-neutral-900 text-neutral-900 cursor-not-allowed bg-transparent rounded-3xl"
+                : "border-orange-500 bg-orange-500 text-black cursor-pointer hover:bg-black hover:text-orange-500 rounded-3xl"}`}
           >
             GENERATE BLOG →
           </button>

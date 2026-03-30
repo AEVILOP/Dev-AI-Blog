@@ -7,13 +7,13 @@ export default function RegenerateButton({
   const disabled  = loading || isCoolingDown || remaining === 0;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="relative">
       <button
         onClick={onRegenerate}
         disabled={disabled}
         className={`font-barlow font-black text-[13px] tracking-[0.1em] uppercase
           border-2 px-5 py-3 flex items-center gap-2.5 transition-all duration-150
-          bg-transparent
+          bg-transparent rounded-3xl
           ${disabled
             ? "border-neutral-900 text-neutral-800 cursor-not-allowed"
             : "border-neutral-700 text-white hover:border-orange-500 hover:text-orange-500 cursor-pointer"}`}
@@ -32,8 +32,8 @@ export default function RegenerateButton({
         )}
       </button>
 
-      {/* Remaining dots */}
-      <div className="flex items-center gap-1.5">
+      {/* Remaining dots positioned absolutely so they don't break flex alignment */}
+      <div className="absolute top-[calc(100%+8px)] left-2 flex items-center gap-1.5">
         {Array.from({ length: maxRegen }).map((_, i) => (
           <div key={i} className={`w-1.5 h-1.5 transition-colors duration-300 ${i < remaining ? "bg-orange-500" : "bg-neutral-900"}`} />
         ))}
