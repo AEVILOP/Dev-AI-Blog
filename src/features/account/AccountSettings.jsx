@@ -15,6 +15,15 @@ export default function AccountSettings() {
   const [subTab, setSubTab] = useState("published"); // for blogs view
   const [fetchingBlogs, setFetchingBlogs] = useState(true);
   const [confirmDel, setConfirmDel] = useState(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "settings", label: "Account Settings" },
+    { id: "blogs", label: "Blogs" },
+    { id: "repos", label: "Repos" },
+  ];
+  const activeNavLabel = navItems.find((item) => item.id === activeTab)?.label || "Dashboard";
 
   useEffect(() => {
     if (loading || !user) {
@@ -38,6 +47,20 @@ export default function AccountSettings() {
       mounted = false;
     };
   }, [loading, user]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileNavOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const published = blogs.filter(b => b.isPublished);
   const drafts    = blogs.filter(b => !b.isPublished);
@@ -320,7 +343,7 @@ export default function AccountSettings() {
   return (
     <div className="flex flex-col lg:flex-row min-h-[calc(100vh-66px)] bg-transparent text-white">
       {/* SIDEBAR */}
-      <div className="hidden lg:flex w-64 border-r-2 border-neutral-900 bg-black flex-col py-8 px-6 shrink-0 h-[calc(100vh-66px)] sticky top-[66px] overflow-y-auto custom-scrollbar">
+      <div className="hidden xl:flex w-64 border-r-2 border-neutral-900 bg-black flex-col py-8 px-6 shrink-0 h-[calc(100vh-66px)] sticky top-[66px] overflow-y-auto custom-scrollbar">
           
           {/* User Profile */}
           <div className="mb-10 text-center">
@@ -332,12 +355,7 @@ export default function AccountSettings() {
 
           {/* Navigation Links */}
           <div className="flex flex-col gap-2 flex-1">
-            {[
-              { id: "dashboard", label: "Dashboard" },
-              { id: "settings", label: "Account-settings" },
-              { id: "blogs", label: "Blogs" },
-              { id: "repos", label: "Repos" },
-            ].map(item => (
+            {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
@@ -357,21 +375,59 @@ export default function AccountSettings() {
       </div>
 
       {/* MOBILE NAV (Dropdown) */}
-      <div className="lg:hidden w-full border-b-2 border-neutral-900 px-4 py-3 bg-black flex gap-2 overflow-x-auto no-scrollbar">
-          {[
-            { id: "dashboard", label: "Dashboard" },
-            { id: "settings", label: "Settings" },
-            { id: "blogs", label: "Blogs" },
-            { id: "repos", label: "Repos" },
-          ].map(item => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`shrink-0 font-barlow font-bold text-[10px] tracking-widest uppercase px-4 py-2 rounded-3xl transition-colors ${activeTab === item.id ? "bg-orange-500 text-black" : "text-neutral-500 border border-neutral-900"}`}
-            >
-              {item.label}
-            </button>
-          ))}
+      <div className="xl:hidden w-full border-b-2 border-neutral-900 bg-black">
+        <div className="flex items-center justify-between gap-3 px-4 py-3">
+          <div className="min-w-0">
+            <div className="font-barlow font-bold text-[10px] tracking-[0.28em] uppercase text-neutral-500">Account</div>
+            <div className="font-barlow font-black text-base uppercase tracking-wide text-white truncate min-[380px]:text-lg">{activeNavLabel}</div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setMobileNavOpen((prev) => !prev)}
+            aria-label={mobileNavOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileNavOpen}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-3xl border border-orange-500/40 bg-neutral-950 text-white transition-colors hover:border-orange-500 hover:text-orange-500 min-[380px]:h-11 min-[380px]:w-11"
+          >
+            <span className="flex flex-col gap-1">
+              <span className={`block h-0.5 w-5 rounded-full bg-current transition-transform duration-200 ${mobileNavOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+              <span className={`block h-0.5 w-5 rounded-full bg-current transition-opacity duration-200 ${mobileNavOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-0.5 w-5 rounded-full bg-current transition-transform duration-200 ${mobileNavOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+            </span>
+          </button>
+        </div>
+
+        {mobileNavOpen && (
+          <div className="border-t border-neutral-900 px-4 pb-4 pt-3">
+            <div className="mb-4 flex items-center gap-3 rounded-3xl border border-neutral-900 bg-neutral-950 px-4 py-3">
+              {user?.avatarUrl && (
+                <img src={user.avatarUrl} alt={user.username} className="h-12 w-12 rounded-full border border-neutral-800" />
+              )}
+              <div className="min-w-0">
+                <div className="font-barlow font-black text-sm uppercase tracking-[0.18em] text-white truncate">{user?.username}</div>
+                <div className="font-barlow text-[10px] uppercase tracking-[0.24em] text-neutral-500">GitHub Developer</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveTab(item.id);
+                    setMobileNavOpen(false);
+                  }}
+                  className={`w-full rounded-3xl px-4 py-3 text-left font-barlow text-[11px] font-bold uppercase tracking-widest transition-colors ${
+                    activeTab === item.id
+                      ? "bg-orange-500 text-black"
+                      : "border border-neutral-900 bg-transparent text-neutral-400 hover:border-orange-500 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* MAIN CONTENT AREA */}
